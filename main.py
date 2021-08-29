@@ -16,7 +16,7 @@ icon = pygame.image.load('snake_icon.png')
 pygame.display.set_icon(icon)
 
 # Fonte
-font_message = pygame.font.SysFont('arialblack', 20, bold=False, italic=False)
+font_message = pygame.font.SysFont('arialblack', 30, bold=False, italic=False)
 font_score = pygame.font.SysFont('arial', 20, bold=True, italic=False)
 #print(pygame.font.get_fonts())
 
@@ -39,13 +39,15 @@ def on_grid_rand():
 def collision(c1, c2):
     return c1[0] == c2[0] and c1[1] == c2[1]
 
+#colisão com as bordas
 def out_of_bounds(head):
     if (head[0] <= 0 or head[0] >= 600) or (head[1] <= 0 or head[1] >= 600):
         return True
 
+#suicidio
 def suicide(body):
-    for i in range(len(body)-1, 0, -1):
-        if body[0] == (body[i][0], body[i][1]):
+    for i in range(1, len(snake) - 1):
+        if snake[0][0] == snake[i][0] and snake[0][1] == snake[i][1]:
             return True
 
 def score_game_text():
@@ -53,13 +55,8 @@ def score_game_text():
     score_message = f'{score}'
     formated_message = font_message.render(message, True, (255, 255, 255))
     formated_score_message = font_score.render(score_message, True, (255, 255, 45))
-    screen.blit(formated_message, (0, 0))
+    screen.blit(formated_message, (5, 5))
     screen.blit(formated_score_message, (140, 5))
-
-def over_game_text():
-    over_message = "Você perdeu!"
-    formated_over_message = font_message.render(over_message, True, (255, 255, 255))
-    screen.blit(formated_over_message, (200, 200))
 
 
 # A cobra é uma lista de segmentos, onde cada segmento é representado por uma tupla (valor de x e y onde está posicionado o quadrado)
@@ -121,26 +118,17 @@ while running:
 
     # Testando colisão com o veneno
     if collision(snake[0], poison_pos):
-#        loser_sound = pygame.mixer.Sound('lose.wav')
-#        loser_sound.play()
-        over_game_text()
 
         running = 0
 
     # Saiu do limite da tela
     if out_of_bounds(snake[0]):
-#        loser_sound = pygame.mixer.Sound('lose.wav')
-#        loser_sound.play()
-        over_game_text()
 
         running = 0
 
 
     # Suicídio
     if suicide(snake):
-#        loser_sound = pygame.mixer.Sound('lose.wav')
-#        loser_sound.play()
-        over_game_text()
 
         running = 0
 
@@ -176,3 +164,25 @@ while running:
         screen.blit(snake_skin, pos)
 
     pygame.display.update()
+
+while True:
+    game_over_font = pygame.font.Font('freesansbold.ttf', 75)
+    game_over_screen = game_over_font.render('Game Over', True, (255, 255, 255))
+    game_over_rect = game_over_screen.get_rect()
+    game_over_rect.midtop = (600 / 2, 100)
+    screen.blit(game_over_screen, game_over_rect)
+    pygame.mixer.music.pause()
+
+#    pygame.mixer.music.load('lose.wav')
+#    pygame.mixer.music.play(-1)
+
+    lose_sound = pygame.mixer.Sound('lose.wav')
+    lose_sound.play()
+
+    pygame.display.update()
+    pygame.time.wait(500)
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
