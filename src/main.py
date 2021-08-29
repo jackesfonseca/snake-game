@@ -78,7 +78,21 @@ poison.fill((255, 255, 255))
 speed = 15
 score = 0
 control_score = 0
-running = True
+running = False
+
+game_start_font = pygame.font.Font('freesansbold.ttf', 25)
+game_start_screen = game_start_font.render('Pressione uma tecla para começar...', True, (255, 255, 255))
+game_start_rect = game_start_screen.get_rect()
+game_start_rect.midtop = (600 / 2, 100)
+screen.blit(game_start_screen, game_start_rect)
+
+pygame.display.update()
+
+while(not running):
+
+    for event in pygame.event.get():
+        if event.type == KEYDOWN:
+            running = True
 
 # Loop do jogo
 while running:
