@@ -79,9 +79,10 @@ speed = 15
 score = 0
 control_score = 0
 running = False
+poison_amount = 1
 
 game_start_font = pygame.font.Font('freesansbold.ttf', 25)
-game_start_screen = game_start_font.render('Pressione uma tecla para começar...', True, (255, 255, 255))
+game_start_screen = game_start_font.render('Clique na tela para começar...', True, (255, 255, 255))
 game_start_rect = game_start_screen.get_rect()
 game_start_rect.midtop = (600 / 2, 100)
 screen.blit(game_start_screen, game_start_rect)
@@ -91,12 +92,16 @@ pygame.display.update()
 while(not running):
 
     for event in pygame.event.get():
-        if event.type == KEYDOWN:
+        if event.type == KEYUP:
             running = True
 
 # Loop do jogo
 while running:
     clock.tick(speed)
+
+    # Aumentar a quantidade de porção
+    if (score-control_score) >= 2:
+        poison_amount += 1
 
     # Aumentar a velocidade
     if (score-control_score) >= 5:
@@ -170,7 +175,9 @@ while running:
     score_game_text()
 
     # Posicionar o objeto na tela
-    screen.blit(poison, poison_pos)
+    for i in range (poison_amount):
+        screen.blit(poison, poison_pos)
+
     screen.blit(apple, apple_pos)
     # Plotar a cobra na tela
     for pos in snake:
