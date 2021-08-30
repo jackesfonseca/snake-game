@@ -99,10 +99,6 @@ while(not running):
 while running:
     clock.tick(speed)
 
-    # Aumentar a quantidade de porção
-    if (score-control_score) >= 2:
-        poison_amount += 1
-
     # Aumentar a velocidade
     if (score-control_score) >= 5:
         speed += 5
@@ -175,10 +171,9 @@ while running:
     score_game_text()
 
     # Posicionar o objeto na tela
-    for i in range (poison_amount):
-        screen.blit(poison, poison_pos)
-
+    screen.blit(poison, poison_pos)
     screen.blit(apple, apple_pos)
+
     # Plotar a cobra na tela
     for pos in snake:
         # O primeiro parâmetro é uma superfície, um desenho ou um sprite e a posição onde se quer plotar
