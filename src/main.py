@@ -82,7 +82,7 @@ running = False
 poison_amount = 1
 
 game_start_font = pygame.font.Font('freesansbold.ttf', 25)
-game_start_screen = game_start_font.render('Clique na tela para começar...', True, (255, 255, 255))
+game_start_screen = game_start_font.render('Pressione um tecla para começar...', True, (255, 255, 255))
 game_start_rect = game_start_screen.get_rect()
 game_start_rect.midtop = (600 / 2, 100)
 screen.blit(game_start_screen, game_start_rect)
