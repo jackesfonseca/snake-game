@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+## Snake Game
 
-You can use the [editor on GitHub](https://github.com/jackesfonseca/snake-game/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This is a Snake Game version with some variations.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### The Game
 
-### Markdown
+The Snake Game consist in grow the snake the maximum possible. For it, is necessary eat the fruit represented by the red square.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Variations
 
-```markdown
-Syntax highlighted code block
+In this version, the snake speed is increased every 5 fruits eated. Furthermore, it will appear a kind of fruit that can't be eated by the snake represented by the white square, otherwise, you lost the game. 
 
-# Header 1
-## Header 2
-### Header 3
+### Github repository
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jackesfonseca/snake-game/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Access the source code by the Github repository [repository settings](https://github.com/jackesfonseca/snake-game/settings/pages).
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having any doubt or sugestion? Contact me by e-mail [jackesdafonseca@gmail.com]
+Follow on my social networks [Linkedin](https://www.linkedin.com/in/jackes-fonseca-711015152/), [Instagram](https://www.instagram.com/jackes_fonseca/)
